@@ -1,0 +1,188 @@
+
+/* Reset */
+
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+	}
+
+	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+
+	body {
+		line-height: 1;
+	}
+
+	ol, ul {
+		list-style: none;
+	}
+
+	blockquote, q {
+		quotes: none;
+	}
+
+	blockquote:before, blockquote:after, q:before, q:after {
+		content: '';
+		content: none;
+	}
+
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
+	body {
+		-webkit-text-size-adjust: none;
+	}
+
+
+.animatedMenu {
+    position: fixed;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    top: 60px;
+    animation-duration: 0.7s;
+    right: 0px;
+    width: 200px;
+    height: auto;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.animatedMenu p {
+    font-family: 'Segoe UI';
+    font-size: larger;
+}
+
+.animatedMenu p:hover {
+    cursor: pointer;
+}
+
+.animatedMenu p a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* ************************************************************************** */
+/*KEYFRAMES*/
+@keyframes myFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes myFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes collapseNavbar {
+    from {
+        height: 150px;
+        background-color: unset;
+    }
+    to {
+        height: 60px;
+        background-color:  rgba(255, 255, 255, 0.3);
+    }
+}
+
+@keyframes expandNavbar {
+    from {
+        height: 60px;
+        background-color:  rgba(255, 255, 255, 0.3);
+    }
+    to {
+        height: 150px;
+        background-color: transparent;
+    }
+}
+
+@keyframes collapseLogo {
+    from {
+        height: 100px;
+        padding-top: 50px;
+        overflow: hidden;
+    }
+    to {
+        height: 50px;
+        padding-left: 5px;
+        padding-top: 5px;
+        overflow: visible;
+    }
+}
+
+@keyframes expandLogo {
+    from {
+        height: 50px;
+        padding-left: 5px;
+        padding-top: 5px;
+        overflow: visible;
+    }
+    to {
+        height: 100px;
+        padding-left: 0px;
+        padding-top: 50px;
+        overflow: hidden;
+    }
+}
+
+
+
+
+/*Davide CSS*/
+/*Banner*/
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: green;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
