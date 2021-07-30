@@ -1,46 +1,33 @@
+/* Luca CSS */
 
-/* Reset */
+/* Canvas contenente la grafica della croce per il menù a comparsa */
+#myCanvas {
+    position: fixed;
+    overflow: hidden;
+    top: 5px;
+    right: 5px;
+    float: right;
+    transition-duration: 0.8s;
+    transition-property: transform;
+}
 
-	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-		margin: 0;
-		padding: 0;
-		border: 0;
-		font-size: 100%;
-		font: inherit;
-		vertical-align: baseline;
-	}
+#myCanvas:hover {
+    cursor: pointer;
+}
 
-	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-		display: block;
-	}
+/* Container del canvas - parte superiore del menù a comparsa */
+.animatedMenuTop {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.3);
+    animation-duration: 0.7s;
+    top: 0px;
+    right: 0px;
+    width: 200px;
+    height: 60px;
+    border-radius: 10px 0px 0px 0px;
+}
 
-	body {
-		line-height: 1;
-	}
-
-	ol, ul {
-		list-style: none;
-	}
-
-	blockquote, q {
-		quotes: none;
-	}
-
-	blockquote:before, blockquote:after, q:before, q:after {
-		content: '';
-		content: none;
-	}
-
-	table {
-		border-collapse: collapse;
-		border-spacing: 0;
-	}
-
-	body {
-		-webkit-text-size-adjust: none;
-	}
-
-
+/* Menù a comparsa */
 .animatedMenu {
     position: fixed;
     text-align: center;
@@ -49,9 +36,8 @@
     animation-duration: 0.7s;
     right: 0px;
     width: 200px;
-    height: auto;
     border-radius: 0px 0px 10px 10px;
-}
+}   
 
 .animatedMenu p {
     font-family: 'Segoe UI';
@@ -67,9 +53,7 @@
     color: black;
 }
 
-
-/* ************************************************************************** */
-/*KEYFRAMES*/
+/* keyframes animazioni css */
 @keyframes myFadeIn {
     from {
         opacity: 0;
@@ -87,59 +71,6 @@
         opacity: 0;
     }
 }
-
-@keyframes collapseNavbar {
-    from {
-        height: 150px;
-        background-color: unset;
-    }
-    to {
-        height: 60px;
-        background-color:  rgba(255, 255, 255, 0.3);
-    }
-}
-
-@keyframes expandNavbar {
-    from {
-        height: 60px;
-        background-color:  rgba(255, 255, 255, 0.3);
-    }
-    to {
-        height: 150px;
-        background-color: transparent;
-    }
-}
-
-@keyframes collapseLogo {
-    from {
-        height: 100px;
-        padding-top: 50px;
-        overflow: hidden;
-    }
-    to {
-        height: 50px;
-        padding-left: 5px;
-        padding-top: 5px;
-        overflow: visible;
-    }
-}
-
-@keyframes expandLogo {
-    from {
-        height: 50px;
-        padding-left: 5px;
-        padding-top: 5px;
-        overflow: visible;
-    }
-    to {
-        height: 100px;
-        padding-left: 0px;
-        padding-top: 50px;
-        overflow: hidden;
-    }
-}
-
-
 
 
 /*Davide CSS*/
