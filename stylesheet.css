@@ -1,8 +1,12 @@
 /* Luca CSS */
 
+body {
+    background-color: indianred;
+}
 /* Canvas contenente la grafica della croce per il menù a comparsa */
 #myCanvas {
     position: fixed;
+    z-index: 1;
     overflow: hidden;
     top: 5px;
     right: 5px;
@@ -32,7 +36,7 @@
     position: fixed;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.3);
-    top: 60px;
+    padding-top: 15px;
     animation-duration: 0.7s;
     right: 0px;
     width: 200px;

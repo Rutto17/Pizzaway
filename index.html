@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>PizzaWay</title>
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <script type="text/javascript" src="script.js" defer></script>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>-->
-  </head>
-  <body>
-    <div class="animatedMenuTop" style="visibility: hidden;"></div>
-    <canvas onclick="showMenu()" id="myCanvas" height="50" width="50"></canvas>
-    <div class="animatedMenu" style="visibility: hidden;">
-        <p><a href="">Home</a></p>
-        <p><a href="">Menù</a></p>
-        <p><a href="">Contatti</a></p>
-    </div>
-    <div class="container">
-      <img src="https://media-cdn.tripadvisor.com/media/photo-s/0f/1f/00/fb/getlstd-property-photo.jpg" alt="Snow" style="width:100%;">
-      <div class="centered">
-        <header>
-          <h1>PizzaWay</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod t<br />
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br>
-              Arrivederci e a presto!</p>
-              <button type="button">CONSULTA MENU</button>
-        </header>
+
+<head>
+  <meta charset="utf-8">
+  <title>PizzaWay</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <script type="text/javascript" src="script.js" defer></script>
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>-->
+</head>
+
+<body>
+  <canvas onclick="showMenu()" id="myCanvas" height="50" width="50"></canvas>
+  <div class="animatedMenu" style="visibility: hidden;">
+    <p><a href="">Home</a></p>
+    <p><a href="">Menù</a></p>
+    <p><a href="">Contatti</a></p>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col text-center">
+        <h1>PizzaWay</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod t
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          Arrivederci e a presto!</p>
+        <button type="button">CONSULTA MENU</button>
       </div>
+      <div class="col"></div>
     </div>
-  </body>
+  </div>
+  <footer class="py-7 py-md-9 bg-black">
+    <p class="text-center">Ciao</p>
+  </footer>
+</body>
+
 </html>

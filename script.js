@@ -45,21 +45,17 @@ function createMenuGraphics() {
 
 function showMenu() {
   var cross = document.querySelector('#myCanvas'),
-      topMenu = document.querySelector('.animatedMenuTop'),
       menu = document.querySelector('.animatedMenu'),
       animationEventType = whichAnimationEvent();
 
   if (!menuActivated) {
     cross.style.transform = 'rotate(135deg)';
-    topMenu.style.visibility = "visible";
-    topMenu.style.animationName = 'myFadeIn';
     menu.style.visibility = 'visible';
     menu.style.animationName = 'myFadeIn';
     menuActivated = true;
   }
   else {
     cross.style.transform = '';
-    topMenu.style.animationName = 'myFadeOut';
     menu.style.animationName = 'myFadeOut';
 
     /*I used to set a timer to set visibility at the end of the animation - not needed anymore
@@ -68,8 +64,7 @@ function showMenu() {
     }, 700);*/
 
     //I need just one event listener since the duration is the same for both elements
-    topMenu.addEventListener(animationEventType, () => {
-      topMenu.style.visibility = 'hidden';
+    menu.addEventListener(animationEventType, () => {
       menu.style.visibility = 'hidden';
     }, { once: true });
     
