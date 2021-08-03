@@ -1,28 +1,29 @@
 //javascript by Giacometti Luca - 2021
 
 //variables
-var menuActivated = false;
+var navbarCollapsed = true;
 
 
 //methods
-function whichAnimationEvent(){
+function whichAnimationEvent() {
   var t,
-      el = document.createElement("fakeelement");
+    el = document.createElement("fakeelement");
 
   var animations = {
-    "animation"      : "animationend",
-    "OAnimation"     : "oAnimationEnd",
-    "MozAnimation"   : "animationend",
+    "animation": "animationend",
+    "OAnimation": "oAnimationEnd",
+    "MozAnimation": "animationend",
     "WebkitAnimation": "webkitAnimationEnd"
   }
 
-  for (t in animations){
-    if (el.style[t] !== undefined){
+  for (t in animations) {
+    if (el.style[t] !== undefined) {
       return animations[t];
     }
   }
 }
 
+/* --MENU' A COMPARSA RIMOSSO
 function createMenuGraphics() {
   var c = document.getElementById("myCanvas");
   if (c.getContext("2d")) {
@@ -51,17 +52,17 @@ function showMenu() {
   if (!menuActivated) {
     cross.style.transform = 'rotate(135deg)';
     menu.style.visibility = 'visible';
-    menu.style.animationName = 'myFadeIn';
+    menu.style.animationName = 'fade-in';
     menuActivated = true;
   }
   else {
     cross.style.transform = '';
-    menu.style.animationName = 'myFadeOut';
+    menu.style.animationName = 'fade-out';
 
     /*I used to set a timer to set visibility at the end of the animation - not needed anymore
     setTimeout(function() {
       hideMenu(topMenu, menu);
-    }, 700);*/
+    }, 700);
 
     //I need just one event listener since the duration is the same for both elements
     menu.addEventListener(animationEventType, () => {
@@ -71,7 +72,38 @@ function showMenu() {
     menuActivated = false;
   }
 }
+*/
 
+function main() {
+  const toggler = document.querySelector('#toggler'),
+    navbar = document.querySelector('#navbar'),
+    animationEnd = whichAnimationEvent();
+  //click handler
+  toggler.addEventListener('click', () => {
+    if (navbarCollapsed) {
+      navbar.className = 'navbar navbar-light navbar-expand-lg navbar-togglable fixed-top';
+      navbar.style.animationDuration = '0.6s';
+      navbar.style.animationName = 'navbar-expand';
+    }
+    else {
+      navbar.className = 'navbar navbar-dark navbar-expand-lg navbar-togglable fixed-top';
+      navbar.style.animationDuration = '0.6s';
+      navbar.style.animationName = 'navbar-collapse';
+    }
+  });
+  //animationEnd handler
+  navbar.addEventListener(animationEnd, () => {
+    if (navbarCollapsed) {
+      navbar.style.backgroundColor = 'rgb(255, 255, 255)';
+      navbarCollapsed = false;
+    }
+    else {
+      navbar.style.backgroundColor = 'transparent';
+      navbarCollapsed = true;
+    }
+  })
+}
 
 //methods called when this js file is loaded
-createMenuGraphics(); //create graphics for 'myCanvas' of animated menu
+main();
+//createMenuGraphics(); //create graphics for 'myCanvas' of animated menu
