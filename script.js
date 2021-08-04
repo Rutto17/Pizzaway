@@ -82,7 +82,7 @@ function main() {
 
 
   //background image size for mobile -- address bar clipping problem
-  //jumbotron.style.height = (window.innerHeight + 60) + 'px';
+  jumbotron.style.height = (window.innerHeight + 60) + 'px';
 
   //toggler click handler
   toggler.addEventListener('click', () => {
