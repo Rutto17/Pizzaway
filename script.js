@@ -1,6 +1,6 @@
 //javascript by Giacometti Luca - 2021
 
-//variables
+//gl variables
 var navbarCollapsed = true;
 
 
@@ -75,14 +75,36 @@ function showMenu() {
 */
 
 function main() {
+  var viewportHeight = window.innerHeight,
+    viewportWidth = window.innerWidth;
   const toggler = document.querySelector('#toggler'),
     navbar = document.querySelector('#navbar'),
     jumbotron = document.querySelector('.jumbotron'),
     animationEnd = whichAnimationEvent();
 
 
-  //background image size for mobile -- address bar clipping problem
-  jumbotron.style.height = (window.innerHeight + 60) + 'px';
+  //solution for address bar problem on mobile
+
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    jumbotron.style.backgroundAttachment = 'unset';
+  }
+
+  window.addEventListener('resize', () => {
+    if (viewportWidth == window.innerWidth) {
+      //resize probably caused by address bar hiding or showing
+      if (jumbotron.style.backgroundAttachment == 'unset') {
+        jumbotron.style.backgroundAttachment = 'fixed';
+      }
+      else {
+        jumbotron.style.backgroundAttachment = 'unset';
+      }
+    }
+    else {
+      //caused by other reasons, just update the variable
+       viewportWidth = window.innerWidth;
+    }
+  });
+
 
   //toggler click handler
   toggler.addEventListener('click', () => {
@@ -109,7 +131,7 @@ function main() {
       navbar.style.backgroundColor = 'transparent';
       navbarCollapsed = true;
     }
-  })
+  });
 }
 
 //methods called when this js file is loaded
