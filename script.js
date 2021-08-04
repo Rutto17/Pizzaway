@@ -84,25 +84,22 @@ function main() {
 
 
   //solution for address bar problem on mobile
-
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     jumbotron.style.backgroundAttachment = 'unset';
   }
-
   window.addEventListener('resize', () => {
     if (viewportWidth == window.innerWidth) {
       //resize probably caused by address bar hiding or showing
-      if (jumbotron.style.backgroundAttachment == 'unset') {
+      if (viewportHeight < window.innerHeight) {
         jumbotron.style.backgroundAttachment = 'fixed';
       }
-      else {
+      else if (viewportHeight > window.innerHeight) {
         jumbotron.style.backgroundAttachment = 'unset';
       }
     }
-    else {
-      //caused by other reasons, just update the variable
-       viewportWidth = window.innerWidth;
-    }
+    //either way update the height & width variable
+    viewportHeight = window.innerHeight;
+    viewportWidth = window.innerWidth;
   });
 
 
