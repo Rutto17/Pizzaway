@@ -77,8 +77,14 @@ function showMenu() {
 function main() {
   const toggler = document.querySelector('#toggler'),
     navbar = document.querySelector('#navbar'),
+    jumbotron = document.querySelector('.jumbotron'),
     animationEnd = whichAnimationEvent();
-  //click handler
+
+
+  //background image size for mobile -- address bar clipping problem
+  jumbotron.style.height = (window.innerHeight + 60) + 'px';
+
+  //toggler click handler
   toggler.addEventListener('click', () => {
     if (navbarCollapsed) {
       navbar.className = 'navbar navbar-light navbar-expand-lg navbar-togglable fixed-top';
@@ -91,7 +97,9 @@ function main() {
       navbar.style.animationName = 'navbar-collapse';
     }
   });
-  //animationEnd handler
+
+
+  //navbar animationEnd handler
   navbar.addEventListener(animationEnd, () => {
     if (navbarCollapsed) {
       navbar.style.backgroundColor = 'rgb(255, 255, 255)';
