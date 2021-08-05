@@ -1,0 +1,50 @@
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+
+.perspective-container {
+  perspective: 1px;
+  margin:0;
+  padding:0;
+	transform-style: preserve-3d;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.slide {
+  position: relative;
+  padding: 25vh 10%;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, .7);
+	transform-style: inherit;
+}
+
+.slide:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, .7);
+}
+
+.slide, .slide:before {
+  background: 50% 50% / cover;  
+}
+
+/*slide1:before o slide1 -> before è in prospettiva/profondo, senza before è in primo piano sempre in prospettiva*/
+#slide1::before {
+  background-image: url('./Assets/landing-page-bg.jpg');
+  transform: translateZ(-1px) scale(2);
+}
+
+#slide2 {
+  background-color: indianred;
+  z-index: 2;
+}

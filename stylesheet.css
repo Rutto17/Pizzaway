@@ -5,6 +5,7 @@ html {
 
 body {
     background-color: indianred;
+    overflow-y: hidden;
     height: 100%;
 }
 /* Canvas contenente la grafica della croce per il menù a comparsa */
@@ -61,6 +62,10 @@ body {
     color: black;
 }
 
+#navbar {
+    background-color: rgba(255, 255, 255, 0);
+}
+
 /* keyframes animazioni css */
 @keyframes fade-in {
     from {
@@ -82,20 +87,20 @@ body {
 
 @keyframes navbar-expand {
     from {
-        background-color: transparent;
+        background-color: rgba(255, 255, 255, 0);
     }
     to {
-        background-color: white;
+        background-color: rgba(255, 255, 255, 1);
     }
 }
 
 
 @keyframes navbar-collapse {
     from {
-        background-color: white;
+        background-color: rgba(255, 255, 255, 1);
     }
     to {
-        background-color: transparent;
+        background-color: rgba(255, 255, 255, 0);
     }
 }
 
@@ -103,12 +108,10 @@ body {
 /*Banner*/
 /* Container holding the image and the text */
 .jumbotron {
-    background-image: url('./Assets/pizzaunesco(Large).png');
-    background-attachment: fixed;
+    background-image: url('./Assets/landing-page-bg.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left center;
-    max-width: 100%;
+    background-position: center center;
+    background-size: 100% 120vh;
     height: 100vh;
     z-index: -100;
 }

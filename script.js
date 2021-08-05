@@ -75,57 +75,50 @@ function showMenu() {
 */
 
 function main() {
-  var viewportHeight = window.innerHeight,
-    viewportWidth = window.innerWidth;
-  const toggler = document.querySelector('#toggler'),
-    navbar = document.querySelector('#navbar'),
-    jumbotron = document.querySelector('.jumbotron'),
-    animationEnd = whichAnimationEvent();
+  const _perspectiveContainer = document.querySelector('.perspective-container'),
+    _toggler = document.querySelector('#toggler'),
+    _navbar = document.querySelector('#navbar'),
+    _animationEnd = whichAnimationEvent(),
+    NAVBAR_FADEANIMATION_DURATION = 100;
 
-
-  //solution for address bar problem on mobile
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    jumbotron.style.backgroundAttachment = 'unset';
-  }
-  window.addEventListener('resize', () => {
-    if (viewportWidth == window.innerWidth) {
-      //resize probably caused by address bar hiding or showing
-      if (viewportHeight < window.innerHeight) {
-        jumbotron.style.backgroundAttachment = 'fixed';
-      }
-      else if (viewportHeight > window.innerHeight) {
-        jumbotron.style.backgroundAttachment = 'unset';
-      }
-    }
-    //either way update the height & width variable
-    viewportHeight = window.innerHeight;
-    viewportWidth = window.innerWidth;
-  });
-
-
-  //toggler click handler
-  toggler.addEventListener('click', () => {
-    if (navbarCollapsed) {
-      navbar.className = 'navbar navbar-light navbar-expand-lg navbar-togglable fixed-top';
-      navbar.style.animationDuration = '0.6s';
-      navbar.style.animationName = 'navbar-expand';
+  //scroll handler for navbar animation
+  _perspectiveContainer.addEventListener('scroll', () => {
+    if (_perspectiveContainer.scrollTop != 0) {
+      _navbar.className = 'navbar navbar-light navbar-expand-lg navbar-togglable fixed-top';
+      _navbar.style.animationDuration = '0.6s';
+      _navbar.style.animationName = 'navbar-expand';
     }
     else {
-      navbar.className = 'navbar navbar-dark navbar-expand-lg navbar-togglable fixed-top';
-      navbar.style.animationDuration = '0.6s';
-      navbar.style.animationName = 'navbar-collapse';
+      _navbar.className = 'navbar navbar-dark navbar-expand-lg navbar-togglable fixed-top';
+      _navbar.style.animationDuration = '0.6s';
+      _navbar.style.animationName = 'navbar-collapse';
+    }
+    //_navbar.style.backgroundColor = 'rgba(255, 255, 255,' + (1/NAVBAR_FADEANIMATION_DURATION)*_perspectiveContainer.scrollTop + ')';
+  });
+
+  //toggler click handler
+  _toggler.addEventListener('click', () => {
+    if (navbarCollapsed) {
+      _navbar.className = 'navbar navbar-light navbar-expand-lg navbar-togglable fixed-top';
+      _navbar.style.animationDuration = '0.6s';
+      _navbar.style.animationName = 'navbar-expand';
+    }
+    else {
+      _navbar.className = 'navbar navbar-dark navbar-expand-lg navbar-togglable fixed-top';
+      _navbar.style.animationDuration = '0.6s';
+      _navbar.style.animationName = 'navbar-collapse';
     }
   });
 
 
   //navbar animationEnd handler
-  navbar.addEventListener(animationEnd, () => {
+  _navbar.addEventListener(_animationEnd, () => {
     if (navbarCollapsed) {
-      navbar.style.backgroundColor = 'rgb(255, 255, 255)';
+      _navbar.style.backgroundColor = 'rgba(255, 255, 255, 1)';
       navbarCollapsed = false;
     }
     else {
-      navbar.style.backgroundColor = 'transparent';
+      _navbar.style.backgroundColor = 'rgba(255, 255, 255, 0)';
       navbarCollapsed = true;
     }
   });
