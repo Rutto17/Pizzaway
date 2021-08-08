@@ -1,11 +1,7 @@
 //javascript by Giacometti Luca - 2021
 
-//gl variables
-var navbarCollapsed = true;
-
-
 //methods
-function whichAnimationEvent() {
+function whichAnimationEndEvent() {
   var t,
     el = document.createElement("fakeelement");
 
@@ -68,37 +64,40 @@ function showMenu() {
     menu.addEventListener(animationEventType, () => {
       menu.style.visibility = 'hidden';
     }, { once: true });
-    
+
     menuActivated = false;
   }
 }
 */
 
 function main() {
+  //COST
   const _perspectiveContainer = document.querySelector('.perspective-container'),
     _toggler = document.querySelector('#toggler'),
     _navbar = document.querySelector('#navbar'),
-    _animationEnd = whichAnimationEvent(),
+    _animationEnd = whichAnimationEndEvent(),
     NAVBAR_FADEANIMATION_DURATION = 100;
+  //GLOBAL VARIABLES
+  window.navbarCollapsed = true;
 
-  //scroll handler for navbar animation
-  _perspectiveContainer.addEventListener('scroll', () => {
-    if (_perspectiveContainer.scrollTop != 0) {
-      _navbar.className = 'navbar navbar-light navbar-expand-lg navbar-togglable fixed-top';
-      _navbar.style.animationDuration = '0.6s';
-      _navbar.style.animationName = 'navbar-expand';
-    }
-    else {
-      _navbar.className = 'navbar navbar-dark navbar-expand-lg navbar-togglable fixed-top';
-      _navbar.style.animationDuration = '0.6s';
-      _navbar.style.animationName = 'navbar-collapse';
-    }
-    //_navbar.style.backgroundColor = 'rgba(255, 255, 255,' + (1/NAVBAR_FADEANIMATION_DURATION)*_perspectiveContainer.scrollTop + ')';
-  });
+  // --------------------- NAVBAR RELATED ---------------------
+  //accounting for scrollbar width
+  // 1-Create the measurement node
+  var scrollDiv = document.createElement("div");
+  scrollDiv.className = "scrollbar-measure";
+  document.body.appendChild(scrollDiv);
+  // 2-Get the scrollbar width
+  var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+  //document.querySelector('#bomba').innerHTML = scrollbarWidth + 'px';
+  // 3-Delete the DIV
+  document.body.removeChild(scrollDiv);
+  //4-set navbar spacing to the right accordingly
+  _navbar.style.right = scrollbarWidth + 'px';
 
-  //toggler click handler
+  //navbar toggler click handler
   _toggler.addEventListener('click', () => {
-    if (navbarCollapsed) {
+    _toggler.style.pointerEvents = 'none';
+    if (window.navbarCollapsed) {
       _navbar.className = 'navbar navbar-light navbar-expand-lg navbar-togglable fixed-top';
       _navbar.style.animationDuration = '0.6s';
       _navbar.style.animationName = 'navbar-expand';
@@ -109,19 +108,32 @@ function main() {
       _navbar.style.animationName = 'navbar-collapse';
     }
   });
-
 
   //navbar animationEnd handler
   _navbar.addEventListener(_animationEnd, () => {
-    if (navbarCollapsed) {
+    if (window.navbarCollapsed) {
       _navbar.style.backgroundColor = 'rgba(255, 255, 255, 1)';
-      navbarCollapsed = false;
+      window.navbarCollapsed = false;
     }
     else {
       _navbar.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-      navbarCollapsed = true;
+      window.navbarCollapsed = true;
     }
+    _toggler.style.pointerEvents = 'auto';
   });
+
+  //scroll handler for navbar animation
+    _perspectiveContainer.addEventListener('scroll', () => {
+      if (_perspectiveContainer.scrollTop >= 0) {
+        if (_perspectiveContainer.scrollTop != 0) {
+          _navbar.className = 'navbar navbar-light navbar-expand-lg navbar-togglable fixed-top';
+        }
+        else {
+          _navbar.className = 'navbar navbar-dark navbar-expand-lg navbar-togglable fixed-top';
+        }
+        _navbar.style.backgroundColor = 'rgba(255, 255, 255,' + (1 / NAVBAR_FADEANIMATION_DURATION) * _perspectiveContainer.scrollTop + ')';
+      }
+    });
 }
 
 //methods called when this js file is loaded

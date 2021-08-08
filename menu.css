@@ -1,11 +1,12 @@
 /* Luca CSS */
+
 html {
     height: 100vh;
 }
 
 body {
-    background-color: indianred;
-    overflow-y: hidden;
+    background-color: white;
+    overflow-y: scroll;
     height: 100%;
 }
 /* Canvas contenente la grafica della croce per il menù a comparsa */
@@ -65,17 +66,6 @@ body {
 #navbar {
     background-color: rgba(255, 255, 255, 0);
 }
-#toggler {
-    border-color: transparent;
-    box-shadow: none;
-}
-.scrollbar-measure {
-    width: 100px;
-    height: 100px;
-    overflow: scroll;
-    position: absolute;
-    top: -9999px;
-}
 
 /* keyframes animazioni css */
 @keyframes fade-in {
@@ -118,33 +108,24 @@ body {
 /*Davide CSS*/
 /*Banner*/
 /* Container holding the image and the text */
-.jumbotron {
-    background-image: url('./Assets/landing-page-bg.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 100% 120vh;
-    height: 100vh;
-    z-index: -100;
+
+.card-columns {
+    column-count: 3;
 }
-.map-responsive{
-  overflow:hidden;
-
-    padding-bottom:56.25%;
-
-    position:relative;
-
-    height:0;
+.menu .menu-content {
+    margin-left: 85px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
 }
-.map-responsive iframe{
+.menuino {
+  display: flex;
+  /* align-items: center; */
 
-    left:0;
+  /* Remove the next line if you want the span to appear next to the h1 */
+  justify-content: space-between;
 
-    top:0;
-
-    height:100%;
-
-    width:100%;
-
-    position:absolute;
+  /* border-bottom: 1px solid #000; */
 
 }

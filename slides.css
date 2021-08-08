@@ -12,6 +12,7 @@ html {
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
+  z-index: 100;
 }
 
 .slide {
@@ -35,7 +36,7 @@ html {
 }
 
 .slide, .slide:before {
-  background: 50% 50% / cover;  
+  background: 50% 50% / cover;
 }
 
 /*slide1:before o slide1 -> before è in prospettiva/profondo, senza before è in primo piano sempre in prospettiva*/
