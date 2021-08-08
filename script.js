@@ -75,23 +75,24 @@ function main() {
   const _perspectiveContainer = document.querySelector('.perspective-container'),
     _toggler = document.querySelector('#toggler'),
     _navbar = document.querySelector('#navbar'),
+    _gMap = document.querySelector('#googleMap'),
     _animationEnd = whichAnimationEndEvent(),
     NAVBAR_FADEANIMATION_DURATION = 100;
   //GLOBAL VARIABLES
   window.navbarCollapsed = true;
 
-  // --------------------- NAVBAR RELATED ---------------------
-  //accounting for scrollbar width
+  //SCROLLBAR WIDTH
   // 1-Create the measurement node
   var scrollDiv = document.createElement("div");
   scrollDiv.className = "scrollbar-measure";
   document.body.appendChild(scrollDiv);
   // 2-Get the scrollbar width
   var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
-  //document.querySelector('#bomba').innerHTML = scrollbarWidth + 'px';
   // 3-Delete the DIV
   document.body.removeChild(scrollDiv);
-  //4-set navbar spacing to the right accordingly
+
+  // --------------------- NAVBAR RELATED ---------------------
+  //navbar spacing according to scrollbar width
   _navbar.style.right = scrollbarWidth + 'px';
 
   //navbar toggler click handler
@@ -123,17 +124,20 @@ function main() {
   });
 
   //scroll handler for navbar animation
-    _perspectiveContainer.addEventListener('scroll', () => {
-      if (_perspectiveContainer.scrollTop >= 0) {
-        if (_perspectiveContainer.scrollTop != 0) {
-          _navbar.className = 'navbar navbar-light navbar-expand-lg navbar-togglable fixed-top';
-        }
-        else {
-          _navbar.className = 'navbar navbar-dark navbar-expand-lg navbar-togglable fixed-top';
-        }
-        _navbar.style.backgroundColor = 'rgba(255, 255, 255,' + (1 / NAVBAR_FADEANIMATION_DURATION) * _perspectiveContainer.scrollTop + ')';
+  _perspectiveContainer.addEventListener('scroll', () => {
+    if (_perspectiveContainer.scrollTop >= 0) {
+      if (_perspectiveContainer.scrollTop != 0) {
+        _navbar.className = 'navbar navbar-light navbar-expand-lg navbar-togglable fixed-top';
       }
-    });
+      else {
+        _navbar.className = 'navbar navbar-dark navbar-expand-lg navbar-togglable fixed-top';
+      }
+      _navbar.style.backgroundColor = 'rgba(255, 255, 255,' + (1 / NAVBAR_FADEANIMATION_DURATION) * _perspectiveContainer.scrollTop + ')';
+    }
+  });
+
+  // --------------------- GOOGLE MAP RELATED ---------------------
+  _gMap.style.right = scrollbarWidth + 'px';
 }
 
 //methods called when this js file is loaded
