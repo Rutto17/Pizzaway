@@ -75,6 +75,9 @@ function main() {
   const _perspectiveContainer = document.querySelector('.perspective-container'),
     _toggler = document.querySelector('#toggler'),
     _navbar = document.querySelector('#navbar'),
+    _navbarBrandTextDesktop = document.querySelector('#desktop-navbar-text-brand'),
+    _navbarBlur = document.querySelector('.navbar-blur'),
+    _navbarTextDesktop = document.querySelectorAll('#desktop-navbar-text'),
     _gMap = document.querySelector('#googleMap'),
     _animationEnd = whichAnimationEndEvent(),
     NAVBAR_FADEANIMATION_DURATION = 100;
@@ -94,6 +97,7 @@ function main() {
   // --------------------- NAVBAR RELATED ---------------------
   //navbar spacing according to scrollbar width
   _navbar.style.right = scrollbarWidth + 'px';
+  _navbarBlur.style.right = scrollbarWidth + 'px';
 
   //navbar toggler click handler
   _toggler.addEventListener('click', () => {
@@ -126,13 +130,22 @@ function main() {
   //scroll handler for navbar animation
   _perspectiveContainer.addEventListener('scroll', () => {
     if (_perspectiveContainer.scrollTop >= 0) {
-      if (_perspectiveContainer.scrollTop != 0) {
-        _navbar.className = 'navbar navbar-light navbar-expand-lg navbar-togglable fixed-top';
+      if (document.documentElement.clientWidth > 991) {
+        //on desktop or tablet
+        _navbarBrandTextDesktop.style.color = 'rgb(' + 2.55 * (100 - _perspectiveContainer.scrollTop) + ','
+          + 2.55 * (100 - _perspectiveContainer.scrollTop) + ','
+          + 2.55 * (100 - _perspectiveContainer.scrollTop) + ')';
+        _navbarTextDesktop.forEach(el => {
+          el.style.color = 'rgba(' + 2.55 * (100 - _perspectiveContainer.scrollTop) + ','
+            + 2.55 * (100 - _perspectiveContainer.scrollTop) + ','
+            + 2.55 * (100 - _perspectiveContainer.scrollTop) + ',' + '0.55)';
+        });
+        _navbar.style.backgroundColor = 'rgba(255, 255, 255,' + (1 / NAVBAR_FADEANIMATION_DURATION) * _perspectiveContainer.scrollTop + ')';
       }
       else {
-        _navbar.className = 'navbar navbar-dark navbar-expand-lg navbar-togglable fixed-top';
+        //on mobile
+        
       }
-      _navbar.style.backgroundColor = 'rgba(255, 255, 255,' + (1 / NAVBAR_FADEANIMATION_DURATION) * _perspectiveContainer.scrollTop + ')';
     }
   });
 
