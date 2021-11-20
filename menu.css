@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background-color: white;
+    background-color: rgba(190, 17, 17, 0.445);
     overflow-y: scroll;
     height: 100%;
 }
@@ -28,7 +28,7 @@ body {
 /* Container del canvas - parte superiore del menù a comparsa */
 .animatedMenuTop {
     position: fixed;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(190, 17, 17, 0.445);
     animation-duration: 0.7s;
     top: 0px;
     right: 0px;
@@ -41,7 +41,7 @@ body {
 .animatedMenu {
     position: fixed;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(190, 17, 17, 0.445);
     padding-top: 15px;
     animation-duration: 0.7s;
     right: 0px;
@@ -64,7 +64,7 @@ body {
 }
 
 #navbar {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(190, 17, 17, 0.445);
 }
 
 /* keyframes animazioni css */
@@ -88,20 +88,20 @@ body {
 
 @keyframes navbar-expand {
     from {
-        background-color: rgba(255, 255, 255, 0);
+        background-color: rgba(190, 17, 17, 0.445);
     }
     to {
-        background-color: rgba(255, 255, 255, 1);
+        background-color: rgb(2190, 17, 17, 0.445);
     }
 }
 
 
 @keyframes navbar-collapse {
     from {
-        background-color: rgba(255, 255, 255, 1);
+        background-color: rgba(190, 17, 17, 0.445);
     }
     to {
-        background-color: rgba(255, 255, 255, 0);
+        background-color: rgba(190, 17, 17, 0.445);
     }
 }
 
