@@ -148,7 +148,7 @@ function main() {
       }
     }
   });
-
+  
   // --------------------- GOOGLE MAP RELATED ---------------------
   _gMap.style.right = scrollbarWidth + 'px';
 }
